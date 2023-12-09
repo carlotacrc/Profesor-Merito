@@ -1,22 +1,32 @@
 package dominio;
 
-public abstract class Merito {
-    ////////atributo/////////
-    protected String titulo;
+import java.io.Serializable;
+import java.util.ArrayList;
 
-    ////////constructor////
-    public Merito(String titulo) {
+public abstract class Merito implements Serializable {
+    protected String titulo;
+    private ArrayList <Merito> meritos;
+
+
+    public Merito(String titulo){
         this.titulo = titulo;
+        meritos = new ArrayList<>();
+    }
+
+    public void  setTitulo(String titulo)
+    {
+        this.titulo = titulo;
+    }
+    public String getTitulo(){
+        return titulo;
+
+    }
+
+    public abstract Double valorar();
+
+    public String toString()
+    {
+        return "Merito: " + titulo + "\nvaloración" + valorar();
     }
     
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-    /////////creamos metodo valorar que es abstracto///////
-    public abstract double valorar();
-
 }
